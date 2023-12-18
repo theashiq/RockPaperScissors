@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		129E0620459A8A423AC276B7 /* Pods_RockPaperScissors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABC75F172C5CCFE4D69F195D /* Pods_RockPaperScissors.framework */; };
 		1AB8F5D72B30C92A000CA1EE /* RockPaperScissorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5D62B30C92A000CA1EE /* RockPaperScissorsApp.swift */; };
 		1AB8F5D92B30C92A000CA1EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5D82B30C92A000CA1EE /* ContentView.swift */; };
 		1AB8F5DB2B30C92C000CA1EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB8F5DA2B30C92C000CA1EE /* Assets.xcassets */; };
@@ -14,11 +15,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0DB6D5364DDD2E96B0720382 /* Pods-RockPaperScissors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RockPaperScissors.release.xcconfig"; path = "Target Support Files/Pods-RockPaperScissors/Pods-RockPaperScissors.release.xcconfig"; sourceTree = "<group>"; };
 		1AB8F5D32B30C92A000CA1EE /* RockPaperScissors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockPaperScissors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB8F5D62B30C92A000CA1EE /* RockPaperScissorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockPaperScissorsApp.swift; sourceTree = "<group>"; };
 		1AB8F5D82B30C92A000CA1EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1AB8F5DA2B30C92C000CA1EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1AB8F5DD2B30C92C000CA1EE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3CDCC2E3E4E4E789F1EDE04F /* Pods-RockPaperScissors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RockPaperScissors.debug.xcconfig"; path = "Target Support Files/Pods-RockPaperScissors/Pods-RockPaperScissors.debug.xcconfig"; sourceTree = "<group>"; };
+		ABC75F172C5CCFE4D69F195D /* Pods_RockPaperScissors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RockPaperScissors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,17 +30,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				129E0620459A8A423AC276B7 /* Pods_RockPaperScissors.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F62AFECDC8ABA45E8D25BB8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ABC75F172C5CCFE4D69F195D /* Pods_RockPaperScissors.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1AB8F5CA2B30C92A000CA1EE = {
 			isa = PBXGroup;
 			children = (
 				1AB8F5D52B30C92A000CA1EE /* RockPaperScissors */,
 				1AB8F5D42B30C92A000CA1EE /* Products */,
+				D273853F135BB0BA2953C48C /* Pods */,
+				0F62AFECDC8ABA45E8D25BB8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +82,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D273853F135BB0BA2953C48C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3CDCC2E3E4E4E789F1EDE04F /* Pods-RockPaperScissors.debug.xcconfig */,
+				0DB6D5364DDD2E96B0720382 /* Pods-RockPaperScissors.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AB8F5E12B30C92C000CA1EE /* Build configuration list for PBXNativeTarget "RockPaperScissors" */;
 			buildPhases = (
+				4DDFCC75C0D3C405354C66BB /* [CP] Check Pods Manifest.lock */,
 				1AB8F5CF2B30C92A000CA1EE /* Sources */,
 				1AB8F5D02B30C92A000CA1EE /* Frameworks */,
 				1AB8F5D12B30C92A000CA1EE /* Resources */,
+				E64813F71633139A14271BE9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4DDFCC75C0D3C405354C66BB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RockPaperScissors-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E64813F71633139A14271BE9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RockPaperScissors/Pods-RockPaperScissors-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RockPaperScissors/Pods-RockPaperScissors-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RockPaperScissors/Pods-RockPaperScissors-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1AB8F5CF2B30C92A000CA1EE /* Sources */ = {
@@ -266,6 +335,7 @@
 		};
 		1AB8F5E22B30C92C000CA1EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CDCC2E3E4E4E789F1EDE04F /* Pods-RockPaperScissors.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -295,6 +365,7 @@
 		};
 		1AB8F5E32B30C92C000CA1EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DB6D5364DDD2E96B0720382 /* Pods-RockPaperScissors.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
