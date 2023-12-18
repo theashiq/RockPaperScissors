@@ -22,7 +22,6 @@ struct SocialAuthenticationView: View {
                            actions: { Button("OK", action: viewModel.dismissAlert) },
                            message: { Text(viewModel.alert.message) }
                     )
-                
             }
         }
     }

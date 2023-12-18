@@ -23,7 +23,7 @@ struct LoaderView: View{
             if isShowingLogo{
                 loadingView
                     .task {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
                             isShowingLogo = false
                         }
                     }
