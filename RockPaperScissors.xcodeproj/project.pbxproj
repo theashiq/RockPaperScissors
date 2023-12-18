@@ -9,20 +9,74 @@
 /* Begin PBXBuildFile section */
 		129E0620459A8A423AC276B7 /* Pods_RockPaperScissors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABC75F172C5CCFE4D69F195D /* Pods_RockPaperScissors.framework */; };
 		1AB8F5D72B30C92A000CA1EE /* RockPaperScissorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5D62B30C92A000CA1EE /* RockPaperScissorsApp.swift */; };
-		1AB8F5D92B30C92A000CA1EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5D82B30C92A000CA1EE /* ContentView.swift */; };
 		1AB8F5DB2B30C92C000CA1EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB8F5DA2B30C92C000CA1EE /* Assets.xcassets */; };
 		1AB8F5DE2B30C92C000CA1EE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB8F5DD2B30C92C000CA1EE /* Preview Assets.xcassets */; };
 		1AB8F5E52B30CAF4000CA1EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AB8F5E42B30CAF3000CA1EE /* GoogleService-Info.plist */; };
+		1AB8F6082B30CCD5000CA1EE /* AnonymousAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5E72B30CCD5000CA1EE /* AnonymousAuthenticationView.swift */; };
+		1AB8F6092B30CCD5000CA1EE /* PhoneAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5E82B30CCD5000CA1EE /* PhoneAuthenticationView.swift */; };
+		1AB8F60A2B30CCD5000CA1EE /* SocialAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5E92B30CCD5000CA1EE /* SocialAuthenticationView.swift */; };
+		1AB8F60B2B30CCD5000CA1EE /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5EA2B30CCD5000CA1EE /* AuthenticationView.swift */; };
+		1AB8F60C2B30CCD5000CA1EE /* EmailAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5EB2B30CCD5000CA1EE /* EmailAuthenticationView.swift */; };
+		1AB8F60D2B30CCD5000CA1EE /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5EC2B30CCD5000CA1EE /* LoaderView.swift */; };
+		1AB8F60E2B30CCD5000CA1EE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5EE2B30CCD5000CA1EE /* CustomButton.swift */; };
+		1AB8F60F2B30CCD5000CA1EE /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5EF2B30CCD5000CA1EE /* CustomSecureField.swift */; };
+		1AB8F6102B30CCD5000CA1EE /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5F02B30CCD5000CA1EE /* CustomTextField.swift */; };
+		1AB8F6112B30CCD5000CA1EE /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5F12B30CCD5000CA1EE /* LogoView.swift */; };
+		1AB8F6122B30CCD5000CA1EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5F22B30CCD5000CA1EE /* ContentView.swift */; };
+		1AB8F6132B30CCD5000CA1EE /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5F42B30CCD5000CA1EE /* String+Ext.swift */; };
+		1AB8F6142B30CCD5000CA1EE /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5F52B30CCD5000CA1EE /* View+Ext.swift */; };
+		1AB8F6152B30CCD5000CA1EE /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5F72B30CCD5000CA1EE /* AuthProvider.swift */; };
+		1AB8F6162B30CCD5000CA1EE /* FirebaseAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5F82B30CCD5000CA1EE /* FirebaseAuthProvider.swift */; };
+		1AB8F6172B30CCD5000CA1EE /* AuthTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5F92B30CCD5000CA1EE /* AuthTracker.swift */; };
+		1AB8F6182B30CCD5000CA1EE /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5FA2B30CCD5000CA1EE /* AuthError.swift */; };
+		1AB8F6192B30CCD5000CA1EE /* AlertMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5FB2B30CCD5000CA1EE /* AlertMe.swift */; };
+		1AB8F61A2B30CCD5000CA1EE /* DummyAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5FC2B30CCD5000CA1EE /* DummyAuthProvider.swift */; };
+		1AB8F61B2B30CCD5000CA1EE /* AuthUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5FD2B30CCD5000CA1EE /* AuthUser.swift */; };
+		1AB8F61C2B30CCD5000CA1EE /* PhoneAuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5FF2B30CCD5000CA1EE /* PhoneAuthenticationViewModel.swift */; };
+		1AB8F61D2B30CCD5000CA1EE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F6002B30CCD5000CA1EE /* ViewModel.swift */; };
+		1AB8F61E2B30CCD5000CA1EE /* AnonymousAuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F6012B30CCD5000CA1EE /* AnonymousAuthenticationViewModel.swift */; };
+		1AB8F61F2B30CCD5000CA1EE /* SocialAuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F6022B30CCD5000CA1EE /* SocialAuthenticationViewModel.swift */; };
+		1AB8F6202B30CCD5000CA1EE /* CustomProgressHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F6032B30CCD5000CA1EE /* CustomProgressHandler.swift */; };
+		1AB8F6212B30CCD5000CA1EE /* EmailAuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F6042B30CCD5000CA1EE /* EmailAuthenticationViewModel.swift */; };
+		1AB8F6222B30CCD5000CA1EE /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F6052B30CCD5000CA1EE /* AuthenticationViewModel.swift */; };
+		1AB8F6232B30CCD5000CA1EE /* InProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F6072B30CCD5000CA1EE /* InProgress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0DB6D5364DDD2E96B0720382 /* Pods-RockPaperScissors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RockPaperScissors.release.xcconfig"; path = "Target Support Files/Pods-RockPaperScissors/Pods-RockPaperScissors.release.xcconfig"; sourceTree = "<group>"; };
 		1AB8F5D32B30C92A000CA1EE /* RockPaperScissors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockPaperScissors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB8F5D62B30C92A000CA1EE /* RockPaperScissorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockPaperScissorsApp.swift; sourceTree = "<group>"; };
-		1AB8F5D82B30C92A000CA1EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1AB8F5DA2B30C92C000CA1EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1AB8F5DD2B30C92C000CA1EE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1AB8F5E42B30CAF3000CA1EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1AB8F5E72B30CCD5000CA1EE /* AnonymousAuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnonymousAuthenticationView.swift; sourceTree = "<group>"; };
+		1AB8F5E82B30CCD5000CA1EE /* PhoneAuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneAuthenticationView.swift; sourceTree = "<group>"; };
+		1AB8F5E92B30CCD5000CA1EE /* SocialAuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialAuthenticationView.swift; sourceTree = "<group>"; };
+		1AB8F5EA2B30CCD5000CA1EE /* AuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		1AB8F5EB2B30CCD5000CA1EE /* EmailAuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailAuthenticationView.swift; sourceTree = "<group>"; };
+		1AB8F5EC2B30CCD5000CA1EE /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		1AB8F5EE2B30CCD5000CA1EE /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		1AB8F5EF2B30CCD5000CA1EE /* CustomSecureField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
+		1AB8F5F02B30CCD5000CA1EE /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		1AB8F5F12B30CCD5000CA1EE /* LogoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		1AB8F5F22B30CCD5000CA1EE /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1AB8F5F42B30CCD5000CA1EE /* String+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		1AB8F5F52B30CCD5000CA1EE /* View+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
+		1AB8F5F72B30CCD5000CA1EE /* AuthProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		1AB8F5F82B30CCD5000CA1EE /* FirebaseAuthProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuthProvider.swift; sourceTree = "<group>"; };
+		1AB8F5F92B30CCD5000CA1EE /* AuthTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTracker.swift; sourceTree = "<group>"; };
+		1AB8F5FA2B30CCD5000CA1EE /* AuthError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		1AB8F5FB2B30CCD5000CA1EE /* AlertMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertMe.swift; sourceTree = "<group>"; };
+		1AB8F5FC2B30CCD5000CA1EE /* DummyAuthProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyAuthProvider.swift; sourceTree = "<group>"; };
+		1AB8F5FD2B30CCD5000CA1EE /* AuthUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthUser.swift; sourceTree = "<group>"; };
+		1AB8F5FF2B30CCD5000CA1EE /* PhoneAuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneAuthenticationViewModel.swift; sourceTree = "<group>"; };
+		1AB8F6002B30CCD5000CA1EE /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		1AB8F6012B30CCD5000CA1EE /* AnonymousAuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnonymousAuthenticationViewModel.swift; sourceTree = "<group>"; };
+		1AB8F6022B30CCD5000CA1EE /* SocialAuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialAuthenticationViewModel.swift; sourceTree = "<group>"; };
+		1AB8F6032B30CCD5000CA1EE /* CustomProgressHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProgressHandler.swift; sourceTree = "<group>"; };
+		1AB8F6042B30CCD5000CA1EE /* EmailAuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailAuthenticationViewModel.swift; sourceTree = "<group>"; };
+		1AB8F6052B30CCD5000CA1EE /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		1AB8F6072B30CCD5000CA1EE /* InProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgress.swift; sourceTree = "<group>"; };
 		3CDCC2E3E4E4E789F1EDE04F /* Pods-RockPaperScissors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RockPaperScissors.debug.xcconfig"; path = "Target Support Files/Pods-RockPaperScissors/Pods-RockPaperScissors.debug.xcconfig"; sourceTree = "<group>"; };
 		ABC75F172C5CCFE4D69F195D /* Pods_RockPaperScissors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RockPaperScissors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -68,9 +122,13 @@
 		1AB8F5D52B30C92A000CA1EE /* RockPaperScissors */ = {
 			isa = PBXGroup;
 			children = (
+				1AB8F5F32B30CCD5000CA1EE /* Extensions */,
+				1AB8F5F62B30CCD5000CA1EE /* Models */,
+				1AB8F5FE2B30CCD5000CA1EE /* ViewModels */,
+				1AB8F6062B30CCD5000CA1EE /* ViewModifiers */,
+				1AB8F5E62B30CCD5000CA1EE /* Views */,
 				1AB8F5E42B30CAF3000CA1EE /* GoogleService-Info.plist */,
 				1AB8F5D62B30C92A000CA1EE /* RockPaperScissorsApp.swift */,
-				1AB8F5D82B30C92A000CA1EE /* ContentView.swift */,
 				1AB8F5DA2B30C92C000CA1EE /* Assets.xcassets */,
 				1AB8F5DC2B30C92C000CA1EE /* Preview Content */,
 			);
@@ -83,6 +141,77 @@
 				1AB8F5DD2B30C92C000CA1EE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1AB8F5E62B30CCD5000CA1EE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1AB8F5E72B30CCD5000CA1EE /* AnonymousAuthenticationView.swift */,
+				1AB8F5E82B30CCD5000CA1EE /* PhoneAuthenticationView.swift */,
+				1AB8F5E92B30CCD5000CA1EE /* SocialAuthenticationView.swift */,
+				1AB8F5EA2B30CCD5000CA1EE /* AuthenticationView.swift */,
+				1AB8F5EB2B30CCD5000CA1EE /* EmailAuthenticationView.swift */,
+				1AB8F5EC2B30CCD5000CA1EE /* LoaderView.swift */,
+				1AB8F5ED2B30CCD5000CA1EE /* ViewComponents */,
+				1AB8F5F22B30CCD5000CA1EE /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1AB8F5ED2B30CCD5000CA1EE /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				1AB8F5EE2B30CCD5000CA1EE /* CustomButton.swift */,
+				1AB8F5EF2B30CCD5000CA1EE /* CustomSecureField.swift */,
+				1AB8F5F02B30CCD5000CA1EE /* CustomTextField.swift */,
+				1AB8F5F12B30CCD5000CA1EE /* LogoView.swift */,
+			);
+			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		1AB8F5F32B30CCD5000CA1EE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1AB8F5F42B30CCD5000CA1EE /* String+Ext.swift */,
+				1AB8F5F52B30CCD5000CA1EE /* View+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1AB8F5F62B30CCD5000CA1EE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1AB8F5F72B30CCD5000CA1EE /* AuthProvider.swift */,
+				1AB8F5F82B30CCD5000CA1EE /* FirebaseAuthProvider.swift */,
+				1AB8F5F92B30CCD5000CA1EE /* AuthTracker.swift */,
+				1AB8F5FA2B30CCD5000CA1EE /* AuthError.swift */,
+				1AB8F5FB2B30CCD5000CA1EE /* AlertMe.swift */,
+				1AB8F5FC2B30CCD5000CA1EE /* DummyAuthProvider.swift */,
+				1AB8F5FD2B30CCD5000CA1EE /* AuthUser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1AB8F5FE2B30CCD5000CA1EE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1AB8F5FF2B30CCD5000CA1EE /* PhoneAuthenticationViewModel.swift */,
+				1AB8F6002B30CCD5000CA1EE /* ViewModel.swift */,
+				1AB8F6012B30CCD5000CA1EE /* AnonymousAuthenticationViewModel.swift */,
+				1AB8F6022B30CCD5000CA1EE /* SocialAuthenticationViewModel.swift */,
+				1AB8F6032B30CCD5000CA1EE /* CustomProgressHandler.swift */,
+				1AB8F6042B30CCD5000CA1EE /* EmailAuthenticationViewModel.swift */,
+				1AB8F6052B30CCD5000CA1EE /* AuthenticationViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1AB8F6062B30CCD5000CA1EE /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				1AB8F6072B30CCD5000CA1EE /* InProgress.swift */,
+			);
+			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 		D273853F135BB0BA2953C48C /* Pods */ = {
@@ -209,8 +338,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AB8F5D92B30C92A000CA1EE /* ContentView.swift in Sources */,
+				1AB8F6142B30CCD5000CA1EE /* View+Ext.swift in Sources */,
+				1AB8F6082B30CCD5000CA1EE /* AnonymousAuthenticationView.swift in Sources */,
+				1AB8F60C2B30CCD5000CA1EE /* EmailAuthenticationView.swift in Sources */,
+				1AB8F61C2B30CCD5000CA1EE /* PhoneAuthenticationViewModel.swift in Sources */,
+				1AB8F6162B30CCD5000CA1EE /* FirebaseAuthProvider.swift in Sources */,
+				1AB8F61D2B30CCD5000CA1EE /* ViewModel.swift in Sources */,
+				1AB8F6122B30CCD5000CA1EE /* ContentView.swift in Sources */,
+				1AB8F6132B30CCD5000CA1EE /* String+Ext.swift in Sources */,
+				1AB8F6192B30CCD5000CA1EE /* AlertMe.swift in Sources */,
+				1AB8F6182B30CCD5000CA1EE /* AuthError.swift in Sources */,
+				1AB8F6212B30CCD5000CA1EE /* EmailAuthenticationViewModel.swift in Sources */,
+				1AB8F6112B30CCD5000CA1EE /* LogoView.swift in Sources */,
 				1AB8F5D72B30C92A000CA1EE /* RockPaperScissorsApp.swift in Sources */,
+				1AB8F61B2B30CCD5000CA1EE /* AuthUser.swift in Sources */,
+				1AB8F60D2B30CCD5000CA1EE /* LoaderView.swift in Sources */,
+				1AB8F61F2B30CCD5000CA1EE /* SocialAuthenticationViewModel.swift in Sources */,
+				1AB8F6222B30CCD5000CA1EE /* AuthenticationViewModel.swift in Sources */,
+				1AB8F61A2B30CCD5000CA1EE /* DummyAuthProvider.swift in Sources */,
+				1AB8F6102B30CCD5000CA1EE /* CustomTextField.swift in Sources */,
+				1AB8F60E2B30CCD5000CA1EE /* CustomButton.swift in Sources */,
+				1AB8F6202B30CCD5000CA1EE /* CustomProgressHandler.swift in Sources */,
+				1AB8F6092B30CCD5000CA1EE /* PhoneAuthenticationView.swift in Sources */,
+				1AB8F60A2B30CCD5000CA1EE /* SocialAuthenticationView.swift in Sources */,
+				1AB8F6152B30CCD5000CA1EE /* AuthProvider.swift in Sources */,
+				1AB8F60F2B30CCD5000CA1EE /* CustomSecureField.swift in Sources */,
+				1AB8F60B2B30CCD5000CA1EE /* AuthenticationView.swift in Sources */,
+				1AB8F6232B30CCD5000CA1EE /* InProgress.swift in Sources */,
+				1AB8F61E2B30CCD5000CA1EE /* AnonymousAuthenticationViewModel.swift in Sources */,
+				1AB8F6172B30CCD5000CA1EE /* AuthTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
