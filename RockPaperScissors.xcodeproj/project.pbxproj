@@ -12,6 +12,7 @@
 		1AB8F5D92B30C92A000CA1EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F5D82B30C92A000CA1EE /* ContentView.swift */; };
 		1AB8F5DB2B30C92C000CA1EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB8F5DA2B30C92C000CA1EE /* Assets.xcassets */; };
 		1AB8F5DE2B30C92C000CA1EE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AB8F5DD2B30C92C000CA1EE /* Preview Assets.xcassets */; };
+		1AB8F5E52B30CAF4000CA1EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AB8F5E42B30CAF3000CA1EE /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		1AB8F5D82B30C92A000CA1EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1AB8F5DA2B30C92C000CA1EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1AB8F5DD2B30C92C000CA1EE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1AB8F5E42B30CAF3000CA1EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CDCC2E3E4E4E789F1EDE04F /* Pods-RockPaperScissors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RockPaperScissors.debug.xcconfig"; path = "Target Support Files/Pods-RockPaperScissors/Pods-RockPaperScissors.debug.xcconfig"; sourceTree = "<group>"; };
 		ABC75F172C5CCFE4D69F195D /* Pods_RockPaperScissors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RockPaperScissors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -66,6 +68,7 @@
 		1AB8F5D52B30C92A000CA1EE /* RockPaperScissors */ = {
 			isa = PBXGroup;
 			children = (
+				1AB8F5E42B30CAF3000CA1EE /* GoogleService-Info.plist */,
 				1AB8F5D62B30C92A000CA1EE /* RockPaperScissorsApp.swift */,
 				1AB8F5D82B30C92A000CA1EE /* ContentView.swift */,
 				1AB8F5DA2B30C92C000CA1EE /* Assets.xcassets */,
@@ -88,7 +91,6 @@
 				3CDCC2E3E4E4E789F1EDE04F /* Pods-RockPaperScissors.debug.xcconfig */,
 				0DB6D5364DDD2E96B0720382 /* Pods-RockPaperScissors.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -154,6 +156,7 @@
 			files = (
 				1AB8F5DE2B30C92C000CA1EE /* Preview Assets.xcassets in Resources */,
 				1AB8F5DB2B30C92C000CA1EE /* Assets.xcassets in Resources */,
+				1AB8F5E52B30CAF4000CA1EE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,7 +254,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -314,7 +317,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -350,12 +353,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.7.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ash.RockPaperScissors;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rock.paper.scissors.fight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -380,12 +384,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.7.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ash.RockPaperScissors;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rock.paper.scissors.fight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
