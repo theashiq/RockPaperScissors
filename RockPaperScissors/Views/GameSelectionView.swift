@@ -11,7 +11,7 @@ struct GameSelectionView: View {
     @StateObject var viewModel: GameSelectionViewModel = GameSelectionViewModel()
     @EnvironmentObject var authTracker: AuthTracker
     @EnvironmentObject var progressHandler: CustomProgressHandler
-    
+    @State var showGameView: Bool = false
     var body: some View {
         
         ZStack{
@@ -52,15 +52,25 @@ struct GameSelectionView: View {
                 Spacer()
             }
             
-            if viewModel.isOpponentFound{
-                GameView(viewModel: GameViewModel(opponent: viewModel.opponent!))
+            if showGameView{
+                gameView
             }
+        }
+        .onChange(of: viewModel.allTeamsFound){ _ in
+            showGameView = viewModel.allTeamsFound
         }
         .alert(viewModel.alert.title,
                 isPresented: $viewModel.isAlertPresented,
                 actions: { Button("OK", action: viewModel.dismissAlert) },
                 message: { Text(viewModel.alert.message) }
          )
+//        .onAppear{
+//            viewModel.singlePlayer()
+//        }
+    }
+    
+    private var gameView: some View{
+        GameView(viewModel: GameViewModel(player1: viewModel.player1!, player2: viewModel.player2!), stayInGame: $showGameView)
     }
 }
 
@@ -68,25 +78,4 @@ struct GameSelectionView: View {
     GameSelectionView()
         .environmentObject(AuthTracker(authProvider: DummyAuthProvider()))
         .environmentObject(CustomProgressHandler())
-}
-
-class GameSelectionViewModel: AlerterViewModel{
-    
-    @Published private(set) var opponent: Player? = nil
-    
-    var isOpponentFound: Bool{
-        opponent != nil
-    }
-    
-    //MARK: - User intents
-    
-    func singlePlayer(){
-        opponent = .computer
-    }
-    func multiplayer(onComplete: (() -> Void)? = nil){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-            self.alert = .alert("No Player Found", "No one is around. Such emptiness.... Play in single player mode instead.")
-            onComplete?()
-        }
-    }
 }

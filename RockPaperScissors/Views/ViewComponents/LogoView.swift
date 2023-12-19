@@ -10,34 +10,54 @@ import SwiftUI
 struct LogoView: View {
     var body: some View{
         ZStack{
-            ZStack{
-                Image(systemName: "lock")
-                    .scaleEffect(CGSize(width: 3.0, height: 3.0))
-                    .foregroundStyle(
-                        .linearGradient(colors: [.blue, .orange], startPoint: .top, endPoint: .bottomTrailing)
-                    )
-                
-                Image(systemName: "flame.fill")
-                    .foregroundStyle(
-                        .linearGradient(colors: [.red, Color(.systemFill)], startPoint: .top, endPoint: .bottomTrailing)
-                    )
-                    .offset(y: 10)
-                
+            HStack{
+                LogoView.rockView
+                .frame(width: 70)
+                .offset(x: 35, y: -25)
+        
+                LogoView.paperView
+                .frame(width: 70)
+                .offset(y: 10)
+        
+                LogoView.scissorsView
+                .frame(width: 70)
+                .offset(x: -35, y: 45)
             }
-            .scaledToFill()
-            .frame(width: 100, height: 100)
-            .scaleEffect(CGSize(width: 2.0, height: 2.0))
-            
-            Text("Authentication Flow")
-                .multilineTextAlignment(.center)
-                .offset(y: 80)
-                .foregroundStyle(
-                    .linearGradient(colors: [.green, .brown, .orange], startPoint: .bottomLeading, endPoint: .topTrailing)
-                )
-                .frame(width: 120)
+            .frame(width: 150, height: 120)
         }
-        .offset(y: -25)
-        .frame(width: 150, height: 150)
+    }
+    
+    static var rockView: some View{
+        Text("Rock")
+        .overlay(alignment: .center){
+            Image(systemName: "cloud.fill").rotationEffect(.degrees(-130))
+                .offset(y: -20)
+        }
+        .foregroundStyle(
+            .linearGradient(colors: [.red, Color(.systemFill)], startPoint: .top, endPoint: .bottomTrailing)
+        )
+    }
+    
+    static var paperView: some View{
+        Text("Paper")
+        .overlay(alignment: .center){
+            Image(systemName: "newspaper.fill")
+                .offset(y: -20)
+        }
+        .foregroundStyle(
+            .linearGradient(colors: [.green, Color(.systemFill)], startPoint: .top, endPoint: .bottomTrailing)
+        )
+    }
+    
+    static var scissorsView: some View{
+        Text("Scissors")
+        .overlay(alignment: .center){
+            Image(systemName: "scissors")
+                .offset(y: -20)
+        }
+        .foregroundStyle(
+            .linearGradient(colors: [.blue, Color(.systemFill)], startPoint: .top, endPoint: .bottomTrailing)
+        )
     }
 }
 
