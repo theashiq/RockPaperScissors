@@ -42,6 +42,9 @@
 		1AB8F6222B30CCD5000CA1EE /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F6052B30CCD5000CA1EE /* AuthenticationViewModel.swift */; };
 		1AB8F6232B30CCD5000CA1EE /* InProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F6072B30CCD5000CA1EE /* InProgress.swift */; };
 		1AB8F6252B30DC2E000CA1EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F6242B30DC2E000CA1EE /* ContentView.swift */; };
+		1AEE6E3D2B31807500C628E4 /* GameSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE6E3C2B31807500C628E4 /* GameSelectionViewModel.swift */; };
+		1AEE6E3F2B31808D00C628E4 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE6E3E2B31808D00C628E4 /* GameViewModel.swift */; };
+		1AEE6E412B31B7F700C628E4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE6E402B31B7F700C628E4 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +84,9 @@
 		1AB8F6052B30CCD5000CA1EE /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		1AB8F6072B30CCD5000CA1EE /* InProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgress.swift; sourceTree = "<group>"; };
 		1AB8F6242B30DC2E000CA1EE /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1AEE6E3C2B31807500C628E4 /* GameSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionViewModel.swift; sourceTree = "<group>"; };
+		1AEE6E3E2B31808D00C628E4 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		1AEE6E402B31B7F700C628E4 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		3CDCC2E3E4E4E789F1EDE04F /* Pods-RockPaperScissors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RockPaperScissors.debug.xcconfig"; path = "Target Support Files/Pods-RockPaperScissors/Pods-RockPaperScissors.debug.xcconfig"; sourceTree = "<group>"; };
 		ABC75F172C5CCFE4D69F195D /* Pods_RockPaperScissors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RockPaperScissors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -194,6 +200,7 @@
 				1AB8F5FB2B30CCD5000CA1EE /* AlertMe.swift */,
 				1AB8F5FC2B30CCD5000CA1EE /* DummyAuthProvider.swift */,
 				1AB8F5FD2B30CCD5000CA1EE /* AuthUser.swift */,
+				1AEE6E402B31B7F700C628E4 /* Player.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,6 +215,8 @@
 				1AB8F6032B30CCD5000CA1EE /* CustomProgressHandler.swift */,
 				1AB8F6042B30CCD5000CA1EE /* EmailAuthenticationViewModel.swift */,
 				1AB8F6052B30CCD5000CA1EE /* AuthenticationViewModel.swift */,
+				1AEE6E3C2B31807500C628E4 /* GameSelectionViewModel.swift */,
+				1AEE6E3E2B31808D00C628E4 /* GameViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -357,6 +366,7 @@
 				1AB8F6212B30CCD5000CA1EE /* EmailAuthenticationViewModel.swift in Sources */,
 				1AB8F6112B30CCD5000CA1EE /* LogoView.swift in Sources */,
 				1AB8F5D72B30C92A000CA1EE /* RockPaperScissorsApp.swift in Sources */,
+				1AEE6E3D2B31807500C628E4 /* GameSelectionViewModel.swift in Sources */,
 				1AB8F61B2B30CCD5000CA1EE /* AuthUser.swift in Sources */,
 				1AB8F60D2B30CCD5000CA1EE /* LoaderView.swift in Sources */,
 				1AB8F61F2B30CCD5000CA1EE /* SocialAuthenticationViewModel.swift in Sources */,
@@ -366,6 +376,7 @@
 				1AB8F60E2B30CCD5000CA1EE /* CustomButton.swift in Sources */,
 				1AB8F6202B30CCD5000CA1EE /* CustomProgressHandler.swift in Sources */,
 				1AB8F6092B30CCD5000CA1EE /* PhoneAuthenticationView.swift in Sources */,
+				1AEE6E3F2B31808D00C628E4 /* GameViewModel.swift in Sources */,
 				1AB8F60A2B30CCD5000CA1EE /* SocialAuthenticationView.swift in Sources */,
 				1AB8F6152B30CCD5000CA1EE /* AuthProvider.swift in Sources */,
 				1AB8F60F2B30CCD5000CA1EE /* CustomSecureField.swift in Sources */,
@@ -374,6 +385,7 @@
 				1AB8F6232B30CCD5000CA1EE /* InProgress.swift in Sources */,
 				1AB8F61E2B30CCD5000CA1EE /* AnonymousAuthenticationViewModel.swift in Sources */,
 				1AB1D37C2B30E2FC00D738C9 /* GameView.swift in Sources */,
+				1AEE6E412B31B7F700C628E4 /* Player.swift in Sources */,
 				1AB8F6172B30CCD5000CA1EE /* AuthTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
