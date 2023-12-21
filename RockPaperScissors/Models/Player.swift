@@ -31,38 +31,86 @@ enum Turn: Int, CaseIterable{
     }
 }
 
-enum PlayerType{ case human, ai }
+protocol PlayerActionListenerDelegate{
+    func playerMadeMove(action turn: Turn, playerId: String)
+}
 
-struct Player{
+
+
+protocol Player: Identifiable {
+    var id: String {get}
+    var displayName: String {get}
+    var isReady: Bool {get}
+    var turn: Turn? {get}
+    var actionListener: PlayerActionListenerDelegate? {get set}
     
+    func proceedToMakeMove()
+    func prepare()
+}
+
+class AiPlayer: Player{
     private(set) var id: String
-    private(set) var displayName: String = ""
-    private(set) var type: PlayerType = .human
-    private(set) var turn: Turn? = nil
+    private(set) var displayName: String
+    private(set) var turn: Turn?
+    private(set) var isReady: Bool = false{
+        didSet{
+            if isReady, let actionListener{
+                turn = .random
+                actionListener.playerMadeMove(action: turn!, playerId: id)
+                isReady = false
+            }
+        }
+    }
+    var actionListener: PlayerActionListenerDelegate?
     
-    init(displayName: String, type: PlayerType = .human, turn: Turn? = nil) {
+    init(id: String, displayName: String) {
+        self.id = id
+        self.displayName = displayName
+    }
+    init(displayName: String) {
         self.id = UUID().uuidString
         self.displayName = displayName
-        self.type = type
-        self.turn = turn
     }
     
-    mutating func makeTurn(_ turn: Turn){
-        self.turn = turn
-    }
-    mutating func getReady(){
-        self.turn = nil
+    func proceedToMakeMove(){
+        isReady = true
     }
     
-    static var dummyHumanPlayer: Player{
-        .init(displayName: "Human Player")
-    }
-    static var dummyAIPlayer: Player{
-        .init(displayName: "AI Player", type: .ai)
+    func prepare(){
+        turn = nil
     }
 }
-extension Player: Equatable {
-    static func ==(lhs: Player, rhs: Player) -> Bool {
-        return lhs.id == rhs.id
+
+class SinglePlayer: Player, PlayerActionListenerDelegate{
+    
+    private(set) var id: String
+    private(set) var displayName: String
+    private(set) var turn: Turn?
+    private(set) var isReady: Bool = false
+    var actionListener: PlayerActionListenerDelegate?
+    
+    init(id: String, displayName: String) {
+        self.id = id
+        self.displayName = displayName
+    }
+    init(displayName: String) {
+        self.id = UUID().uuidString
+        self.displayName = displayName
+    }
+    
+    func proceedToMakeMove(){
+        isReady = true
+    }
+    
+    func prepare(){
+        turn = nil
+    }
+    
+    func playerMadeMove(action turn: Turn, playerId: String) {
+        if isReady, let actionListener{
+            self.turn = turn
+            actionListener.playerMadeMove(action: turn, playerId: id)
+            isReady = false
+        }
     }
 }

@@ -12,6 +12,13 @@ class AuthTracker: ObservableObject, AuthUserUpdateDelegate{
     @Published private(set) var userId: String? = nil
     @Published private(set) var displayName: String = ""
     @Published private(set) var isAuthenticated: Bool = false
+    @Published private(set) var user: AuthUser? = nil{
+        didSet{
+            self.userId = user?.id
+            self.displayName = user?.displayName ?? AuthUser.defaultDisplayName
+            self.isAuthenticated = user != nil
+        }
+    }
     
     private(set) var authProvider: AuthProvider
     
@@ -23,9 +30,7 @@ class AuthTracker: ObservableObject, AuthUserUpdateDelegate{
     // MARK: AuthUserUpdateDelegate methods
     func authUserDidChange(authUser: AuthUser?) {
         DispatchQueue.main.async{
-            self.userId = authUser?.id
-            self.displayName = authUser?.displayName ?? AuthUser.defaultDisplayName
-            self.isAuthenticated = authUser != nil
+            self.user = authUser
         }
     }
 }
