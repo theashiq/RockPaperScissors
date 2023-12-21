@@ -42,6 +42,8 @@
 		1AB8F6222B30CCD5000CA1EE /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F6052B30CCD5000CA1EE /* AuthenticationViewModel.swift */; };
 		1AB8F6232B30CCD5000CA1EE /* InProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F6072B30CCD5000CA1EE /* InProgress.swift */; };
 		1AB8F6252B30DC2E000CA1EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB8F6242B30DC2E000CA1EE /* ContentView.swift */; };
+		1AE424522B32CCEB003478E5 /* PlayerAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE424512B32CCEB003478E5 /* PlayerAreaView.swift */; };
+		1AE424542B32CD09003478E5 /* PlayerAreaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE424532B32CD09003478E5 /* PlayerAreaViewModel.swift */; };
 		1AEE6E3D2B31807500C628E4 /* GameSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE6E3C2B31807500C628E4 /* GameSelectionViewModel.swift */; };
 		1AEE6E3F2B31808D00C628E4 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE6E3E2B31808D00C628E4 /* GameViewModel.swift */; };
 		1AEE6E412B31B7F700C628E4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE6E402B31B7F700C628E4 /* Player.swift */; };
@@ -84,6 +86,8 @@
 		1AB8F6052B30CCD5000CA1EE /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		1AB8F6072B30CCD5000CA1EE /* InProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgress.swift; sourceTree = "<group>"; };
 		1AB8F6242B30DC2E000CA1EE /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1AE424512B32CCEB003478E5 /* PlayerAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAreaView.swift; sourceTree = "<group>"; };
+		1AE424532B32CD09003478E5 /* PlayerAreaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAreaViewModel.swift; sourceTree = "<group>"; };
 		1AEE6E3C2B31807500C628E4 /* GameSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSelectionViewModel.swift; sourceTree = "<group>"; };
 		1AEE6E3E2B31808D00C628E4 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		1AEE6E402B31B7F700C628E4 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 				1AB8F5EC2B30CCD5000CA1EE /* LoaderView.swift */,
 				1AB8F5F22B30CCD5000CA1EE /* GameSelectionView.swift */,
 				1AB1D37B2B30E2FC00D738C9 /* GameView.swift */,
+				1AE424512B32CCEB003478E5 /* PlayerAreaView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 				1AB8F6052B30CCD5000CA1EE /* AuthenticationViewModel.swift */,
 				1AEE6E3C2B31807500C628E4 /* GameSelectionViewModel.swift */,
 				1AEE6E3E2B31808D00C628E4 /* GameViewModel.swift */,
+				1AE424532B32CD09003478E5 /* PlayerAreaViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 				1AEE6E3D2B31807500C628E4 /* GameSelectionViewModel.swift in Sources */,
 				1AB8F61B2B30CCD5000CA1EE /* AuthUser.swift in Sources */,
 				1AB8F60D2B30CCD5000CA1EE /* LoaderView.swift in Sources */,
+				1AE424522B32CCEB003478E5 /* PlayerAreaView.swift in Sources */,
 				1AB8F61F2B30CCD5000CA1EE /* SocialAuthenticationViewModel.swift in Sources */,
 				1AB8F6222B30CCD5000CA1EE /* AuthenticationViewModel.swift in Sources */,
 				1AB8F61A2B30CCD5000CA1EE /* DummyAuthProvider.swift in Sources */,
@@ -378,6 +385,7 @@
 				1AB8F6092B30CCD5000CA1EE /* PhoneAuthenticationView.swift in Sources */,
 				1AEE6E3F2B31808D00C628E4 /* GameViewModel.swift in Sources */,
 				1AB8F60A2B30CCD5000CA1EE /* SocialAuthenticationView.swift in Sources */,
+				1AE424542B32CD09003478E5 /* PlayerAreaViewModel.swift in Sources */,
 				1AB8F6152B30CCD5000CA1EE /* AuthProvider.swift in Sources */,
 				1AB8F60F2B30CCD5000CA1EE /* CustomSecureField.swift in Sources */,
 				1AB8F60B2B30CCD5000CA1EE /* AuthenticationView.swift in Sources */,

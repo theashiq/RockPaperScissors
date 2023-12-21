@@ -11,7 +11,7 @@ struct GameSelectionView: View {
     @StateObject var viewModel: GameSelectionViewModel = GameSelectionViewModel()
     @EnvironmentObject var authTracker: AuthTracker
     @EnvironmentObject var progressHandler: CustomProgressHandler
-    @State var showGameView: Bool = false
+    
     var body: some View {
         
         ZStack{
@@ -24,7 +24,7 @@ struct GameSelectionView: View {
                 Button{
                     withAnimation {
                         progressHandler.updateProgressState(true, message: "Searching Player")
-                        viewModel.multiplayer{
+                        viewModel.multiplayer(authUser: authTracker.user){
                             progressHandler.updateProgressState(false)
                         }
                     }
@@ -52,25 +52,22 @@ struct GameSelectionView: View {
                 Spacer()
             }
             
-            if showGameView{
+            if viewModel.proceedToGameView{
                 gameView
             }
-        }
-        .onChange(of: viewModel.allTeamsFound){ _ in
-            showGameView = viewModel.allTeamsFound
         }
         .alert(viewModel.alert.title,
                 isPresented: $viewModel.isAlertPresented,
                 actions: { Button("OK", action: viewModel.dismissAlert) },
                 message: { Text(viewModel.alert.message) }
          )
-//        .onAppear{
-//            viewModel.singlePlayer()
-//        }
+        .onAppear{
+            viewModel.singlePlayer()
+        }
     }
     
     private var gameView: some View{
-        GameView(viewModel: GameViewModel(player1: viewModel.player1!, player2: viewModel.player2!), stayInGame: $showGameView)
+        GameView(viewModel: GameViewModel(player: viewModel.player1!, opponent: viewModel.player2!), stayInGame: $viewModel.proceedToGameView)
     }
 }
 

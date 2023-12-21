@@ -7,100 +7,101 @@
 
 import Foundation
 
-protocol PlayerActionListenerDelegate{
-    func playerMadeMove(action turn: Turn, playerId: String)
+enum GameResult: String{
+    case win = "Win"
+    case lose = "Lose"
+    case tie = "Tie"
+    
+    var opposite: GameResult{
+        switch self {
+        case .lose: return .win
+        case .win: return .lose
+        case .tie: return .tie
+        }
+    }
 }
 
 class GameViewModel: ObservableObject, PlayerActionListenerDelegate{
     
-    @Published private(set) var player1: Player
-    @Published private(set) var player2: Player
+    @Published private(set) var player: any Player
+    @Published private(set) var opponent: any Player
+
+    @Published private(set) var playerScore: Int = 0
+    @Published private(set) var opponentScore: Int = 0
     
-    @Published private(set) var score1: Int = 0
-    @Published private(set) var score2: Int = 0
     @Published private(set) var matchPlayed: Int = 0
-    @Published private(set) var winner: Player? = nil
+    @Published private(set) var playerResult: GameResult? = nil
     @Published private(set) var gameOver: Bool = false
     
     var isResultViewHidden: Bool{
         matchPlayed < 0 || !gameOver
     }
     
-    func result(for player: Player)-> GameResult?{
-        guard gameOver else{
-            return nil
-        }
-        
-        if let winnerId = winner?.id{
-            return winnerId == player.id ? .win : .lose
-        }
-        
-        return .tie
-    }
-    
-    var playerAreaViewModel1: PlayerAreaViewModel{
+    var playerAreaViewModel: PlayerAreaViewModel{
         PlayerAreaViewModel(
-            playerId: player1.id,
-            playerActionListener: self,
+            playerId: player.id,
+            playerActionListener: player is PlayerActionListenerDelegate ? player as? PlayerActionListenerDelegate : nil,
             isOpponent: true,
-            currentTurn: player1.turn,
-            result: result(for: player1)
+            currentTurn: player.turn,
+            result: playerResult
         )
     }
     
-    var playerAreaViewModel2: PlayerAreaViewModel{
+    var opponentAreaViewModel: PlayerAreaViewModel{
         PlayerAreaViewModel(
-            playerId: player2.id,
-            playerActionListener: self,
+            playerId: opponent.id,
+            playerActionListener: opponent is PlayerActionListenerDelegate ? opponent as? PlayerActionListenerDelegate : nil,
             isOpponent: false,
-            currentTurn: player2.turn,
-            result: result(for: player2)
+            currentTurn: opponent.turn,
+            result: playerResult?.opposite
         )
     }
     
-    init(player1: Player, player2: Player) {
-        self.player1 = player1
-        self.player2 = player2
-    }
-    
-    func playerMadeMove(action turn: Turn, playerId: String) {
-        if player1.id == playerId && player1.turn == nil{
-            player1.makeTurn(turn)
-        }
-        else if player2.id == playerId && player2.turn == nil{
-            player2.makeTurn(turn)
-        }
-        
-        decideResult()
+    init(player: any Player, opponent: any Player) {
+        self.player = player
+        self.opponent = opponent
+        self.player.actionListener = self
+        self.opponent.actionListener = self
     }
     
     //MARK:  PlayerActionListenerDelegate
-    private func decideResult(){
-        
-        if let player1Turn = player1.turn,
-           let player2Turn = player2.turn{
-            
-            if let winnerTurn = player1Turn.winner(against: player2Turn){
-                if winnerTurn == player1Turn{
-                    score1 += 1
-                    self.winner = player1
+    
+    func playerMadeMove(action turn: Turn, playerId: String) {
+
+        if let playerTurn = player.turn, let opponentTurn =  opponent.turn{
+            gameOver = true
+            if playerTurn == opponentTurn{
+                playerResult = .tie
+            }
+            else{
+                if playerTurn.winner(against: opponentTurn) == playerTurn{
+                    playerScore += 1
+                    playerResult = .win
                 }
                 else{
-                    score2 += 1
-                    self.winner = player2
+                    opponentScore += 1
+                    playerResult = .lose
                 }
             }
-            gameOver = true
-            matchPlayed += 1
         }
     }
+    
     //MARK: - User intents
     
+    func allowMove(){
+        player.proceedToMakeMove()
+        opponent.proceedToMakeMove()
+    }
+    
     func playAgain(){
-        winner = nil
         gameOver = false
-        player1.getReady()
-        player2.getReady()
+        playerResult = nil
+        player.prepare()
+        opponent.prepare()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+            self.allowMove()
+        }
     }
     
 }

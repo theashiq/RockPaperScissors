@@ -34,7 +34,6 @@ struct LoaderView: View{
                     .environmentObject(progressHandler)
             }
         }
-        
     }
     
     private var loadingView: some View{
