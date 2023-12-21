@@ -53,14 +53,6 @@ struct GameView: View {
                         }
                         .frame(width: geometry.size.width / 2 - 5)
                     }
-                    
-                    Button("Play"){
-                        withAnimation {
-                            viewModel.playAgain()
-                        }
-                    }
-                    .buttonStyle(.borderless)
-                    
                 }
             }
             .position(x:geometry.frame(in:.local).midX,y:geometry.frame(in:.local).midY)
@@ -77,6 +69,7 @@ struct GameView: View {
                 .padding(.vertical, 100)
             
             VStack{
+                scoreAndStuff
                 
                 Group{
                     
@@ -89,6 +82,7 @@ struct GameView: View {
                 }
                 .font(.title.bold())
                 .padding(.bottom)
+                
                 
                 Button("Play Again"){
                     withAnimation {
