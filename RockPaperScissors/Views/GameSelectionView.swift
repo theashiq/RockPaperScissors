@@ -22,9 +22,9 @@ struct GameSelectionView: View {
                 Spacer()
                 
                 Button{
-                    withAnimation {
+                    Task{
                         progressHandler.updateProgressState(true, message: "Searching Player")
-                        viewModel.multiplayer(authUser: authTracker.user){
+                        await viewModel.multiplayer{
                             progressHandler.updateProgressState(false)
                         }
                     }
@@ -62,7 +62,7 @@ struct GameSelectionView: View {
                 message: { Text(viewModel.alert.message) }
          )
         .onAppear{
-            viewModel.singlePlayer()
+            viewModel.authTracker = authTracker
         }
     }
     

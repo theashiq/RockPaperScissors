@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 enum Turn: Int, CaseIterable{
     case rock = 1, paper, scissors
@@ -113,4 +114,56 @@ class SinglePlayer: Player, PlayerActionListenerDelegate{
             isReady = false
         }
     }
+}
+
+
+class FirebasePlayer: Player{
+    private(set) var id: String
+    private(set) var displayName: String
+    private(set) var turn: Turn?
+    private(set) var isReady: Bool = false
+    var actionListener: PlayerActionListenerDelegate?
+    var gameDocument: DocumentReference
+    
+    init(id: String, displayName: String, gameDocument: DocumentReference) {
+        self.id = id
+        self.displayName = displayName
+        self.gameDocument = gameDocument
+    }
+    
+    func proceedToMakeMove() {
+        
+    }
+    
+    func prepare() {
+        
+    }
+    
+    
+}
+
+
+class FirebaseOpponentPlayer: Player{
+    private(set) var id: String
+    private(set) var displayName: String
+    private(set) var turn: Turn?
+    private(set) var isReady: Bool = false
+    var actionListener: PlayerActionListenerDelegate?
+    var gameDocument: DocumentReference
+    
+    init(id: String, displayName: String, gameDocument: DocumentReference) {
+        self.id = id
+        self.displayName = displayName
+        self.gameDocument = gameDocument
+    }
+    
+    func proceedToMakeMove() {
+        
+    }
+    
+    func prepare() {
+        
+    }
+    
+    
 }
