@@ -8,14 +8,6 @@
 import Foundation
 import FirebaseFirestore
 
-struct Game: Codable{
-    var id1: String = ""
-    var id2: String = ""
-    var displayName1: String = ""
-    var displayName2: String = ""
-    var turn1: Int = 0
-    var turn2: Int = 0
-}
 
 @MainActor
 class GameSelectionViewModel: AlerterViewModel{
@@ -26,8 +18,8 @@ class GameSelectionViewModel: AlerterViewModel{
     }
     
     public var authTracker: AuthTracker? = nil
-    private(set) var player1: (any Player)? = nil
-    private(set) var player2: (any Player)? = nil{
+    private(set) var player: (any Player)? = nil
+    private(set) var opponent: (any Player)? = nil{
         didSet{
             proceedToGameView = true
         }
@@ -39,46 +31,12 @@ class GameSelectionViewModel: AlerterViewModel{
         db = Firestore.firestore()
     }
     
-    func writeData(){
-        Task{
-            do{
-                let ref = try await db.collection("user").addDocument(data: [
-                  "first": "Ada",
-                  "last": "Lovelace",
-                  "born": 1815
-                ])
-                
-                try await db.collection("user").document("TOK").setData([
-                  "name": "Tokyo",
-                  "country": "Japan",
-                  "capital": true,
-                  "population": 9000000,
-                  "regions": ["kanto", "honshu"]
-                ])
-                try await db.collection("user").document("BJ").setData([
-                  "name": "Beijing",
-                  "country": "China",
-                  "capital": true,
-                  "population": 21500000,
-                  "regions": ["jingjinji", "hebei"]
-                ])
-                
-                print("Document added with ID: \(ref.documentID)")
-            } catch {
-                print("Error adding document: \(error)")
-            }
-            
-            
-            
-        }
-    }
-    
     private func createNewGame(user: AuthUser) -> DocumentReference?{
-        let game = Game(id1: user.id, displayName1: user.displayName)
+        let game = Game(p1Id: user.id, p1DisplayName: user.displayName)
         
         do{
             var ref = try gamesCollection.addDocument(from: game)
-//            self.player1 = FirebasePlayer(id: user.id, displayName: user.displayName, gameDocument: ref)
+//            self.player = FirebasePlayer(id: user.id, displayName: user.displayName, gameDocument: ref)
             return ref
         }
         catch{
@@ -87,14 +45,26 @@ class GameSelectionViewModel: AlerterViewModel{
     }
     
     private func findAnEmptyGameDocId(authUserId: String) async -> DocumentReference? {
+        print("find")
         do{
             let emptyGamesDocSnaps = try await gamesCollection
-                                                    .whereField("id2", isEqualTo: "")
-                                                    .whereField("id1", isNotEqualTo: authUserId)
-                                                    .limit(to: 1)
+//                                                    .whereField("p2Id", isEqualTo: "")
+                                                    .whereField("p1Id", isNotEqualTo: "")
+                                                    .limit(to: 5)
                                                     .getDocuments()
             
-            return emptyGamesDocSnaps.documents.first?.reference
+            
+            print(emptyGamesDocSnaps.documents.first?.documentID)
+            
+            return emptyGamesDocSnaps.documents.first { snap in
+                do{
+                    let game = try snap.data(as: Game.self)
+                    return game.p2Id != authUserId
+                }
+                catch{
+                    return false
+                }
+            }?.reference
         }
         catch{
             return nil
@@ -105,17 +75,17 @@ class GameSelectionViewModel: AlerterViewModel{
         
         do{
             var game = try await gameDocRef.getDocument().data(as: Game.self)
-//            player2 = FirebaseOpponentPlayer(
+//            opponent = FirebaseOpponentPlayer(
 //                id: game.id1,
 //                displayName: game.displayName1,
 //                gameDocument: gameDocRef
 //            )
             
-            game.id2 = user.id
-            game.displayName2 = user.displayName
+            game.p2Id = user.id
+            game.p2DisplayName = user.displayName
             
             try gameDocRef.setData(from: game, merge: true)
-//            player1 = FirebasePlayer(id: user.id, displayName: user.displayName, gameDocument: gameDocRef)
+//            player = FirebasePlayer(id: user.id, displayName: user.displayName, gameDocument: gameDocRef)
             return true
         }
         catch{
@@ -126,8 +96,8 @@ class GameSelectionViewModel: AlerterViewModel{
     //MARK: - User intents
     
     func singlePlayer(){
-        player1 = SinglePlayer(displayName: "You")
-        player2 = AiPlayer(displayName: "AI Player")
+        player = SinglePlayer(displayName: "You")
+        opponent = AiPlayer(displayName: "AI Player")
     }
     
     func multiplayer(onComplete: (() -> Void)? = nil) async {
@@ -144,12 +114,16 @@ class GameSelectionViewModel: AlerterViewModel{
         if let emptyGameDocRef = await findAnEmptyGameDocId(authUserId: user.id),
                                  await joinGame(gameDocRef: emptyGameDocRef, user: user) {
             gameReference = emptyGameDocRef
+            print(107)
+            print(gameReference?.documentID)
         }
 //      Crate new game
         else if let newGameDocRef = createNewGame(user: user){
 //          New game is created.
 //          Now wait for an opponent to join and create Player2 when someone joins
             gameReference = newGameDocRef
+            print(115)
+            print(gameReference?.documentID)
         }
         else{
 //          Failed to create new game
@@ -167,15 +141,15 @@ class GameSelectionViewModel: AlerterViewModel{
                     return
                 }
                 do{
-                    if let game = try docSnap?.data(as: Game.self), (!game.id1.isEmpty && !game.id2.isEmpty){
+                    if let game = try docSnap?.data(as: Game.self), (!game.p1Id.isEmpty && !game.p2Id.isEmpty){
                         
-                        if user.id == game.id1{
-                            self?.player1 = FirebasePlayer(id: game.id1, displayName: game.displayName1, gameDocument: gameReference)
-                            self?.player2 = FirebasePlayer(id: game.id2, displayName: game.displayName2, gameDocument: gameReference)
+                        if user.id == game.p1Id{
+                            self?.player = FirebasePlayer(id: game.p1Id, displayName: game.p1DisplayName, gameDocument: gameReference)
+                            self?.opponent = FirebasePlayer(id: game.p2Id, displayName: game.p2DisplayName, gameDocument: gameReference, isOpponent: true)
                         }
                         else{
-                            self?.player2 = FirebasePlayer(id: game.id1, displayName: game.displayName1, gameDocument: gameReference)
-                            self?.player1 = FirebasePlayer(id: game.id2, displayName: game.displayName2, gameDocument: gameReference)
+                            self?.opponent = FirebasePlayer(id: game.p1Id, displayName: game.p1DisplayName, gameDocument: gameReference, isOpponent: true)
+                            self?.player = FirebasePlayer(id: game.p2Id, displayName: game.p2DisplayName, gameDocument: gameReference)
                         }
                         
                         self?.proceedToGameView = true

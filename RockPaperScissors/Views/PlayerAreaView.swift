@@ -65,6 +65,10 @@ struct PlayerAreaView: View {
                 .padding()
             }
         }
+        
+        .onAppear{
+            viewModel.playerReady()
+        }
     }
     
     var bgColor: Color{

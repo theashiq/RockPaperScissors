@@ -62,6 +62,6 @@ struct LoaderView: View{
 
 #Preview {
     LoaderView()
-        .environmentObject(AuthTracker(authProvider: DummyAuthProvider()))
+        .environmentObject(AuthTracker(authProvider: FirebaseAuthProvider()))
         .environmentObject(CustomProgressHandler())
 }

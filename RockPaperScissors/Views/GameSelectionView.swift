@@ -67,7 +67,7 @@ struct GameSelectionView: View {
     }
     
     private var gameView: some View{
-        GameView(viewModel: GameViewModel(player: viewModel.player1!, opponent: viewModel.player2!), stayInGame: $viewModel.proceedToGameView)
+        GameView(viewModel: GameViewModel(player: viewModel.player!, opponent: viewModel.opponent!), stayInGame: $viewModel.proceedToGameView)
     }
 }
 
