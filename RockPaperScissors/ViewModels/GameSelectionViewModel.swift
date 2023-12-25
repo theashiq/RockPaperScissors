@@ -6,11 +6,20 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
+
+@MainActor
 class GameSelectionViewModel: AlerterViewModel{
     
-    private(set) var player1: (any Player)? = nil
-    private(set) var player2: (any Player)? = nil{
+    private var db: Firestore
+    private var gamesCollection: CollectionReference{
+        db.collection("games")
+    }
+    
+    public var authTracker: AuthTracker? = nil
+    private(set) var player: (any Player)? = nil
+    private(set) var opponent: (any Player)? = nil{
         didSet{
             proceedToGameView = true
         }
@@ -18,32 +27,130 @@ class GameSelectionViewModel: AlerterViewModel{
     
     @Published var proceedToGameView: Bool = false
     
-    //MARK: - User intents
-    
-    func singlePlayer(authUser: AuthUser? = nil){
-        if let authUser{
-            player1 = SinglePlayer(id: authUser.id, displayName: authUser.displayName)
-        }
-        else{
-            player1 = SinglePlayer(displayName: "You")
-        }
-        player2 = AiPlayer(displayName: "AI Player")
+    override init() {
+        db = Firestore.firestore()
     }
     
-    func multiplayer(authUser: AuthUser?, onComplete: (() -> Void)? = nil){
-        guard let authUser else{
-            alert = .alert("Log In First", "You are not logged in. Log in to play online")
+    private func createNewGame(user: AuthUser) -> DocumentReference?{
+        let game = Game(p1Id: user.id, p1DisplayName: user.displayName)
+        
+        do{
+            return try gamesCollection.addDocument(from: game)
+        }
+        catch{
+            return nil
+        }
+    }
+    
+    private func findAnEmptyGameDocId(authUserId: String) async -> DocumentReference? {
+        do{
+            let emptyGamesDocSnaps = try await gamesCollection
+//                                                    .whereField("p2Id", isEqualTo: "")
+                                                    .whereField("p1Id", isNotEqualTo: "")
+                                                    .limit(to: 5)
+                                                    .getDocuments()
+            
+            return emptyGamesDocSnaps.documents.first { snap in
+                do{
+                    let game = try snap.data(as: Game.self)
+                    return game.p2Id != authUserId
+                }
+                catch{
+                    return false
+                }
+            }?.reference
+        }
+        catch{
+            return nil
+        }
+    }
+    
+    private func joinGame(gameDocRef: DocumentReference, user: AuthUser) async -> Bool{
+        
+        do{
+            var game = try await gameDocRef.getDocument().data(as: Game.self)
+            game.p2Id = user.id
+            game.p2DisplayName = user.displayName
+            
+            try gameDocRef.setData(from: game, merge: true)
+            
+            return true
+        }
+        catch{
+            return false
+        }
+    }
+    
+    //MARK: - User intents
+    
+    func singlePlayer(){
+        player = SinglePlayer(displayName: "You")
+        opponent = AiPlayer(displayName: "AI Player")
+    }
+    
+    func multiplayer(onComplete: (() -> Void)? = nil) async {
+    
+        guard let user = authTracker?.user else{
+            onComplete?()
+            alert = .authErrorAlert(from: .notLoggedIn)
+            return
+        }
+        
+        var gameReference: DocumentReference? = nil
+        
+//      Find an empty game and join
+        if let emptyGameDocRef = await findAnEmptyGameDocId(authUserId: user.id),
+                                 await joinGame(gameDocRef: emptyGameDocRef, user: user) {
+            gameReference = emptyGameDocRef
+        }
+//      Crate new game
+        else if let newGameDocRef = createNewGame(user: user){
+//          New game is created.
+//          Now wait for an opponent to join and create Player2 when someone joins
+            gameReference = newGameDocRef
+        }
+        else{
+//          Failed to create new game
+            alert = .alert("Oh no", "Failed to join server 1")
             onComplete?()
             return
         }
         
-//        player1 = Player(id: authUser.id, displayName: authUser.displayName)
-//        
-//        player2 = Player(id: authUser.id, displayName: authUser.displayName)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
-            self.alert = .alert("No Player Found", "No one is around. Such emptiness.... Play in single player mode instead.")
+        if let gameReference{
+            
+            gameReference.addSnapshotListener { [weak self] docSnap, snapError in
+                if let snapError{
+                    self?.alert = .alert("Something Went Wrong", snapError.localizedDescription)
+                    onComplete?()
+                    return
+                }
+                do{
+                    if let game = try docSnap?.data(as: Game.self), (!game.p1Id.isEmpty && !game.p2Id.isEmpty){
+                        
+                        if user.id == game.p1Id{
+                            self?.player = FirebasePlayer(id: game.p1Id, displayName: game.p1DisplayName, gameDocument: gameReference)
+                            self?.opponent = FirebasePlayer(id: game.p2Id, displayName: game.p2DisplayName, gameDocument: gameReference, isOpponent: true)
+                        }
+                        else{
+                            self?.player = FirebasePlayer(id: game.p2Id, displayName: game.p2DisplayName, gameDocument: gameReference, isOpponent: true)
+                            self?.opponent = FirebasePlayer(id: game.p1Id, displayName: game.p1DisplayName, gameDocument: gameReference)
+                        }
+                        
+                        self?.proceedToGameView = true
+                        onComplete?()
+                    }
+                }
+                catch(let error){
+                    self?.alert = .alert("Oh no", error.localizedDescription)
+                    onComplete?()
+                    return
+                }
+            }
+        }
+        else{
+            alert = .alert("Oh no", "Failed to join server 3")
             onComplete?()
+            return
         }
     }
 }

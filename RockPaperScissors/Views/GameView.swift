@@ -26,9 +26,9 @@ struct GameView: View {
                                                      removal: .scale.animation(.easeInOut)))
                 .isHidden(viewModel.isResultViewHidden, remove: true)
         }
-        .onAppear{
-            viewModel.allowMove()
-        }
+//        .onAppear{
+//            viewModel.allowMove()
+//        }
     }
     
     private var scoreAndStuff: some View{
