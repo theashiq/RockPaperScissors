@@ -37,6 +37,7 @@ class PlayerAreaViewModel: ObservableObject{
     
     func makeTurn(_ turn: Turn){
         isInputsDisabled = true
+        print("playerMadeMove 40 \(turn) by \(playerId)")
         playerActionListener?.playerMadeMove(action: turn, playerId: playerId)
     }
     

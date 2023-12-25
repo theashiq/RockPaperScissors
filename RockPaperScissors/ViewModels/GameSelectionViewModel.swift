@@ -35,9 +35,7 @@ class GameSelectionViewModel: AlerterViewModel{
         let game = Game(p1Id: user.id, p1DisplayName: user.displayName)
         
         do{
-            var ref = try gamesCollection.addDocument(from: game)
-//            self.player = FirebasePlayer(id: user.id, displayName: user.displayName, gameDocument: ref)
-            return ref
+            return try gamesCollection.addDocument(from: game)
         }
         catch{
             return nil
@@ -45,16 +43,12 @@ class GameSelectionViewModel: AlerterViewModel{
     }
     
     private func findAnEmptyGameDocId(authUserId: String) async -> DocumentReference? {
-        print("find")
         do{
             let emptyGamesDocSnaps = try await gamesCollection
 //                                                    .whereField("p2Id", isEqualTo: "")
                                                     .whereField("p1Id", isNotEqualTo: "")
                                                     .limit(to: 5)
                                                     .getDocuments()
-            
-            
-            print(emptyGamesDocSnaps.documents.first?.documentID)
             
             return emptyGamesDocSnaps.documents.first { snap in
                 do{
@@ -75,17 +69,11 @@ class GameSelectionViewModel: AlerterViewModel{
         
         do{
             var game = try await gameDocRef.getDocument().data(as: Game.self)
-//            opponent = FirebaseOpponentPlayer(
-//                id: game.id1,
-//                displayName: game.displayName1,
-//                gameDocument: gameDocRef
-//            )
-            
             game.p2Id = user.id
             game.p2DisplayName = user.displayName
             
             try gameDocRef.setData(from: game, merge: true)
-//            player = FirebasePlayer(id: user.id, displayName: user.displayName, gameDocument: gameDocRef)
+            
             return true
         }
         catch{
@@ -114,16 +102,12 @@ class GameSelectionViewModel: AlerterViewModel{
         if let emptyGameDocRef = await findAnEmptyGameDocId(authUserId: user.id),
                                  await joinGame(gameDocRef: emptyGameDocRef, user: user) {
             gameReference = emptyGameDocRef
-            print(107)
-            print(gameReference?.documentID)
         }
 //      Crate new game
         else if let newGameDocRef = createNewGame(user: user){
 //          New game is created.
 //          Now wait for an opponent to join and create Player2 when someone joins
             gameReference = newGameDocRef
-            print(115)
-            print(gameReference?.documentID)
         }
         else{
 //          Failed to create new game
@@ -148,8 +132,8 @@ class GameSelectionViewModel: AlerterViewModel{
                             self?.opponent = FirebasePlayer(id: game.p2Id, displayName: game.p2DisplayName, gameDocument: gameReference, isOpponent: true)
                         }
                         else{
-                            self?.opponent = FirebasePlayer(id: game.p1Id, displayName: game.p1DisplayName, gameDocument: gameReference, isOpponent: true)
-                            self?.player = FirebasePlayer(id: game.p2Id, displayName: game.p2DisplayName, gameDocument: gameReference)
+                            self?.player = FirebasePlayer(id: game.p2Id, displayName: game.p2DisplayName, gameDocument: gameReference, isOpponent: true)
+                            self?.opponent = FirebasePlayer(id: game.p1Id, displayName: game.p1DisplayName, gameDocument: gameReference)
                         }
                         
                         self?.proceedToGameView = true

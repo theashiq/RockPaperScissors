@@ -238,22 +238,27 @@ class FirebasePlayer: Player, PlayerActionListenerDelegate{
     var game: Game! = nil{
         didSet{
             if isOpponent{
-                ready = game.p2Ready
+                if !ready{
+                    ready = game.p2Ready
+                }
                 
                 if ready && game.p2MoveAllowed{
                     allowMove = true
                 }
-                if allowMove{
+                if turn != game.p2Turn{
                     turn = game.p2Turn
                 }
             }
             else{
-                ready = game.p1Ready
+                if !ready{
+                    ready = game.p1Ready
+                }
                 
                 if ready && game.p1MoveAllowed{
                     allowMove = true
                 }
-                if allowMove{
+                
+                if turn != game.p1Turn{
                     turn = game.p1Turn
                 }
             }
@@ -297,18 +302,17 @@ class FirebasePlayer: Player, PlayerActionListenerDelegate{
     
     func proceedToMakeMove(){
         
-        if isOpponent{
-            game.p2MoveAllowed = true
-        }
-        else{
+        if !isOpponent{
+            
             game.p1MoveAllowed = true
-        }
-        
-        do{
-            try gameDocument.setData(from: game, merge: true)
-        }
-        catch{
-            leaveGame(311)
+            game.p2MoveAllowed = true
+            
+            do{
+                try gameDocument.setData(from: game, merge: true)
+            }
+            catch{
+                leaveGame(311)
+            }
         }
     }
     
@@ -330,6 +334,7 @@ class FirebasePlayer: Player, PlayerActionListenerDelegate{
     }
     
     func playerMadeMove(action turn: Turn, playerId: String) {
+        print("playerMadeMove 333 \(turn) by \(playerId)")
         if allowMove{
             if isOpponent{
                 game.p2Turn = turn
@@ -348,6 +353,8 @@ class FirebasePlayer: Player, PlayerActionListenerDelegate{
     }
     
     func playerReady(playerId: String) {
-        beReady()
+        if !ready{
+            beReady()
+        }
     }
 }

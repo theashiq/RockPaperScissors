@@ -52,7 +52,7 @@ class GameViewModel: ObservableObject, PlayerActionListenerDelegate{
     var opponentAreaViewModel: PlayerAreaViewModel{
         PlayerAreaViewModel(
             playerId: game.p2Id,
-            playerActionListener: opponent is PlayerActionListenerDelegate ? opponent as? PlayerActionListenerDelegate : nil,
+            playerActionListener: /*opponent is PlayerActionListenerDelegate ? opponent as? PlayerActionListenerDelegate :*/ nil,
             isOpponent: false,
             currentTurn: game.p2Turn,
             result: playerResult?.opposite
@@ -94,17 +94,25 @@ class GameViewModel: ObservableObject, PlayerActionListenerDelegate{
     }
     
     func playerReady(playerId: String) {
-        if playerId == player.id && !game.p1Ready{
-            game.p1Ready = true
-        }
-        else if playerId == opponent.id && !game.p2Ready{
-            game.p2Ready = true
-        }
-        else{
+//        if playerId == player.id && !player.ready{
+//            game.p1Ready = true
+//        }
+//        else if playerId == opponent.id && !opponent.ready{
+//            game.p2Ready = true
+//        }
+//        else{
+//            return
+//        }
+//        
+//        if game.p1Ready && game.p2Ready{
+//            allowMove()
+//        }
+        
+        if player.allowMove && opponent.allowMove{
             return
         }
         
-        if game.p1Ready && game.p2Ready{
+        if player.ready && opponent.ready{
             allowMove()
         }
     }
@@ -112,8 +120,10 @@ class GameViewModel: ObservableObject, PlayerActionListenerDelegate{
     //MARK: - User intents
     
     func allowMove(){
-        player.proceedToMakeMove()
-        opponent.proceedToMakeMove()
+        if !player.allowMove && !opponent.allowMove{
+            player.proceedToMakeMove()
+            opponent.proceedToMakeMove()
+        }
     }
     
     func playAgain(){
